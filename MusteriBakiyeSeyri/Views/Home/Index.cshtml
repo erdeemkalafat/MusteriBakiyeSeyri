@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Home Page"; 
+    }
+@using DataAccessLayer.Entities
+@{ 
+    List<musteri_tanim_table> musteriList = (List<musteri_tanim_table>)ViewBag.musteriler; 
+}
+<form asp-action="IndexBySp">
+    <select id="selectedMusteriId" name="selectedMusteriId">
+        @foreach (var musteri in musteriList)
+        {
+<option value="@musteri.ID">@musteri.UNVAN</option>
+        }
+    </select>
+    <input type="submit" value="Ara" />
+</form>
+@if (ViewBag.maxBorcTar != null && ViewBag.maxBorc != null)
+{
+<div>
+     <div>max borç Tarihi:@ViewBag.maxBorcTar</div>
+    <div>max borç       :@ViewBag.maxBorc</div>
+</div>
+}
